@@ -91,6 +91,6 @@ def show_result(style, filename):
     return '<img src="' + url_for('static', filename='results/'+new_name) + '" />'
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run()
 
 
