@@ -1,0 +1,41 @@
+{% extends "layout.html" %}
+{% block navbar %}
+
+<ul class="nav navbar-nav navbar-right">
+    <li class=""><a href="#">About</a></li>
+</ul>
+{% endblock %}
+
+{% block main %}
+    <h1>Welcome to Fast Style Transfer demo</h1>
+    <p>upload your favorite photo and assign a famous style to it!</p>
+
+    <form method=post enctype=multipart/form-data>
+        <div class="row"><div class="col-md-12">
+            <label for="selectStyle">Select a Style</label>
+            <div class="radio">
+                {% for img in styles %}
+                <div class="col-md-2">
+                    <label>
+                        <input type="radio" name="style" value={{ img }}>
+                        <img src=" {{ url_for('static', filename='style/'+img) }} " width="150px" />{{ img.split('.')[0] }}
+                    </label>
+                </div>
+                {% endfor %}
+            </div>
+        </div></div>
+
+        <div class="row"><div class="col-md-6">
+        <label>Upload a File
+            <div><input id="file" type="file" class="file" name="file"></input></div>
+        </label>
+        </div>
+
+        <div class="col-md-6" align="center">
+            <div class="">
+                <input type="submit" class="btn btn-primary" value="Start Evaluation"></input>
+            </div>
+        </div></div>
+
+    </form>
+{% endblock %}

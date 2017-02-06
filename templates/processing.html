@@ -1,0 +1,28 @@
+{% extends "layout.html" %}
+{% block navbar %}
+<ul class="nav navbar-nav navbar-right">
+    <li class=""><a href="#">About</a></li>
+</ul>
+{% endblock %}
+
+{% block main %}
+<p>Processing... Please wait...</p>
+{% endblock %}
+
+{% block js %}
+<script>
+    function ajaxCallback(data) {
+        if (data.done) {
+            window.location.replace('{{ url_for('show_result', filename=filename, style=style) }}');
+        }
+        else {
+            window.setTimeout(function() {
+                $.getJSON('{{ url_for('get_result') }}', {id: '{{ id }}' }, ajaxCallback);
+            }, 1000);
+        }
+    }
+    $(document).ready(function(){
+        ajaxCallback({done: false});
+    });
+</script>
+{% endblock %}
