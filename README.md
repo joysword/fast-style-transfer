@@ -1,11 +1,15 @@
+<hr>
+below is the original readme file by Logan Engstrom
+<hr>
+
 ## Fast Style Transfer in [TensorFlow](https://github.com/tensorflow/tensorflow)
 
 Add styles from famous paintings to any photo in a fraction of a second! [You can even style videos!](#video-stylization)
 
 <p align = 'center'>
-<img src = 'examples/style/udnie.jpg' height = '246px'>
-<img src = 'examples/content/stata.jpg' height = '246px'>
-<a href = 'examples/results/stata_udnie.jpg'><img src = 'examples/results/stata_udnie_header.jpg' width = '627px'></a>
+<img src = 'static/style/udnie.jpg' height = '246px'>
+<img src = 'static/content/stata.jpg' height = '246px'>
+<a href = 'static/results/stata_udnie.jpg'><img src = 'static/results/stata_udnie_header.jpg' width = '627px'></a>
 </p>
 <p align = 'center'>
 It takes 100ms on a 2015 Titan X to style the MIT Stata Center (1024×680) like Udnie, by Francis Picabia.
@@ -17,7 +21,7 @@ Our implementation is based off of a combination of Gatys' [A Neural Algorithm o
 Here we transformed every frame in a video, then combined the results. [Click to go to the full demo on YouTube!](https://www.youtube.com/watch?v=xVJwwWQlQ1o) The style here is Udnie, as above.
 <div align = 'center'>
      <a href = 'https://www.youtube.com/watch?v=xVJwwWQlQ1o'>
-        <img src = 'examples/results/fox_udnie.gif' alt = 'Stylized fox video. Click to go to YouTube!' width = '800px' height = '400px'>
+        <img src = 'static/results/fox_udnie.gif' alt = 'Stylized fox video. Click to go to YouTube!' width = '800px' height = '400px'>
      </a>
 </div>
 
@@ -26,25 +30,25 @@ See how to generate these videos [here](#stylizing-video)!
 ## Image Stylization
 We added styles from various paintings to a photo of Chicago. Click on thumbnails to see full applied style images.
 <div align='center'>
-<img src = 'examples/content/chicago.jpg' height="200px">
+<img src = 'static/content/chicago.jpg' height="200px">
 </div>
      
 <div align = 'center'>
-<a href = 'examples/style/wave.jpg'><img src = 'examples/thumbs/wave.jpg' height = '200px'></a>
-<img src = 'examples/results/chicago_wave.jpg' height = '200px'>
-<img src = 'examples/results/chicago_udnie.jpg' height = '200px'>
-<a href = 'examples/style/udnie.jpg'><img src = 'examples/thumbs/udnie.jpg' height = '200px'></a>
+<a href = 'static/style/wave.jpg'><img src = 'static/thumbs/wave.jpg' height = '200px'></a>
+<img src = 'static/results/chicago_wave.jpg' height = '200px'>
+<img src = 'static/results/chicago_udnie.jpg' height = '200px'>
+<a href = 'static/style/udnie.jpg'><img src = 'static/thumbs/udnie.jpg' height = '200px'></a>
 <br>
-<a href = 'examples/style/rain_princess.jpg'><img src = 'examples/thumbs/rain_princess.jpg' height = '200px'></a>
-<img src = 'examples/results/chicago_rain_princess.jpg' height = '200px'>
-<img src = 'examples/results/chicago_la_muse.jpg' height = '200px'>
-<a href = 'examples/style/la_muse.jpg'><img src = 'examples/thumbs/la_muse.jpg' height = '200px'></a>
+<a href = 'static/style/rain_princess.jpg'><img src = 'static/thumbs/rain_princess.jpg' height = '200px'></a>
+<img src = 'static/results/chicago_rain_princess.jpg' height = '200px'>
+<img src = 'static/results/chicago_la_muse.jpg' height = '200px'>
+<a href = 'static/style/la_muse.jpg'><img src = 'static/thumbs/la_muse.jpg' height = '200px'></a>
 
 <br>
-<a href = 'examples/style/the_shipwreck_of_the_minotaur.jpg'><img src = 'examples/thumbs/the_shipwreck_of_the_minotaur.jpg' height = '200px'></a>
-<img src = 'examples/results/chicago_wreck.jpg' height = '200px'>
-<img src = 'examples/results/chicago_the_scream.jpg' height = '200px'>
-<a href = 'examples/style/the_scream.jpg'><img src = 'examples/thumbs/the_scream.jpg' height = '200px'></a>
+<a href = 'static/style/the_shipwreck_of_the_minotaur.jpg'><img src = 'static/thumbs/the_shipwreck_of_the_minotaur.jpg' height = '200px'></a>
+<img src = 'static/results/chicago_wreck.jpg' height = '200px'>
+<img src = 'static/results/chicago_the_scream.jpg' height = '200px'>
+<a href = 'static/style/the_scream.jpg'><img src = 'static/thumbs/the_scream.jpg' height = '200px'></a>
 </div>
 
 ## Implementation Details
@@ -80,11 +84,12 @@ Use `transform_video.py` to transfer style into a video. Run `python transform_v
 
 ### Requirements
 You will need the following to run the above:
+
 - TensorFlow 0.11.0
 - Python 2.7.9, Pillow 3.4.2, scipy 0.18.1, numpy 1.11.2
 - If you want to train (and don't want to wait for 4 months):
-  - A decent GPU
-  - All the required NVIDIA software to run TF on a GPU (cuda, etc)
+  * A decent GPU
+  * All the required NVIDIA software to run TF on a GPU (cuda, etc)
 - ffmpeg 3.1.3 if you want to stylize video
 
 ### Citation
