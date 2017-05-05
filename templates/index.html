@@ -8,7 +8,9 @@
 
 {% block main %}
     <h1>Welcome to Fast Style Transfer demo</h1>
-    <p>upload your favorite photo and assign a famous style to it!</p>
+    <h6>by Shiwangi Singh and Shi Yin</h6>
+    <div>
+    <p>Upload your favorite photo and assign a famous style to it!</p>
 
     <form method=post enctype=multipart/form-data>
         <div class="row"><div class="col-md-12">
@@ -33,9 +35,10 @@
 
         <div class="col-md-6" align="center">
             <div class="">
-                <input type="submit" class="btn btn-primary" value="Start Evaluation"></input>
+                <br><br>
+                <input type="submit" class="btn btn-primary" value="Start Style Transfer"></input>
             </div>
         </div></div>
-
+    </div>
     </form>
 {% endblock %}

@@ -26,8 +26,13 @@ app.config['STYLE_FOLDER'] = STYLE_FOLDER
 background_scripts = {}
 
 def run_evaluation(id, style, filename):
+    ckpt = ''
+    if style == 'chinese' or style == 'picasso':
+        ckpt = os.path.join(CHECKPOINT_FOLDER, style)
+    else:
+        ckpt = os.path.join(CHECKPOINT_FOLDER, style+'.ckpt')
     subprocess.call([FST_FOLDER+'/evaluate.py',
-        '--checkpoint', os.path.join(CHECKPOINT_FOLDER, style+'.ckpt'),
+        '--checkpoint', ckpt,
         '--in-path', os.path.join(UPLOAD_FOLDER, filename),
         '--out-path', RESULT_FOLDER])
     # subprocess.call([FST_FOLDER+'/test.py',
