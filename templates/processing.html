@@ -13,9 +13,11 @@
 <script>
     function ajaxCallback(data) {
         if (data.done) {
+            console.log('yes!');
             window.location.replace('{{ url_for('show_result', filename=filename, style=style) }}');
         }
         else {
+            console.log('no!');
             window.setTimeout(function() {
                 $.getJSON('{{ url_for('get_result') }}', {id: '{{ id }}' }, ajaxCallback);
             }, 1000);

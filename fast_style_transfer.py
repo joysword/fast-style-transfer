@@ -26,11 +26,16 @@ app.config['STYLE_FOLDER'] = STYLE_FOLDER
 background_scripts = {}
 
 def run_evaluation(id, style, filename):
+    print 'in run_evaluation'
     ckpt = ''
     if style == 'chinese' or style == 'picasso':
         ckpt = os.path.join(CHECKPOINT_FOLDER, style)
     else:
         ckpt = os.path.join(CHECKPOINT_FOLDER, style+'.ckpt')
+    print 'calling subprocess'
+    print 'ckpt:', ckpt
+    print 'in-path:', os.path.join(UPLOAD_FOLDER, filename),
+    print 'out-path:', RESULT_FOLDER
     subprocess.call([FST_FOLDER+'/evaluate.py',
         '--checkpoint', ckpt,
         '--in-path', os.path.join(UPLOAD_FOLDER, filename),
@@ -38,6 +43,7 @@ def run_evaluation(id, style, filename):
     # subprocess.call([FST_FOLDER+'/test.py',
     #     '--hello', 'true', '--good', 'false'])
     background_scripts[id] = True
+    print 'out run_evaluation'
 
 # manager = Manager(app)
 
@@ -71,15 +77,19 @@ def index():
             filename = secure_filename(file.filename)
             file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
             # TODO: what if the file name exist?
+        print 'filename:', filename
+        print 'style:', style
         return redirect(url_for('evaluate', filename=filename, style=style))
     else:
         return render_template('index.html', styles=get_styles())
 
 @app.route('/evaluate/<style>/<filename>')
 def evaluate(style, filename):
+    print 'in evaluate'
     id = str(uuid.uuid4())
     background_scripts[id] = False
     threading.Thread(target=lambda: run_evaluation(id, style, filename)).start()
+    print 'started thread'
     return render_template('processing.html', id=id, filename=filename, style=style)
 
 @app.route('/get_result')
